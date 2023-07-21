@@ -17,7 +17,7 @@ public class UpriseClient {
 
             // Create a reader to read user input from the console
             BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
-
+           System.out.println("Welcome to Uprise Sacco Command Line Interface");
             // Prompt for command, username, and password
             System.out.println("Enter command, username, password, and additional details separated by spaces:");
             String[] inputTokens = consoleReader.readLine().split(" ");
@@ -54,10 +54,9 @@ public class UpriseClient {
 
     
     private static void login(BufferedReader input, PrintWriter output, String username, String password) throws IOException {
-        System.out.println("Welcome to Uprise Sacco Command Line Login page!");
-        int loginAttempts = 0;
+        BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
-        while (loginAttempts < 3) {
+       
             // Send login request to the server
             output.println("login " + username + " " + password);
 
@@ -69,22 +68,22 @@ public class UpriseClient {
             if (serverResponse.equals("Login successful")) {
                 System.out.println("Login successful");
                 executeCommands(input, output);
-                break;
             } else {
-                System.out.println("Invalid username or password. Please try again.");
-                loginAttempts++;
+                System.out.println("Invalid username or password. enter your member number and phone number .");
+                String [] refInputs = consoleReader.readLine().split(" ");
+                requestReference(input, output,refInputs);
             }
         }
-    }
+    
 
     private static void executeCommands(BufferedReader input, PrintWriter output) throws IOException {
         boolean continueExecution = true;
     
         while (continueExecution) {
-            System.out.println("1. deposit");
+            System.out.println("1. deposit (command amount receiptNumber)");
             System.out.println("2. checkLoanStatus");
             System.out.println("3. checkStatement");
-            System.out.println("4. requestLoan");
+            System.out.println("4. requestLoan(command amount paymentPeriod memberMumber )");
     
             System.out.println("Enter a command followed by its details:");
             BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
@@ -126,16 +125,27 @@ public class UpriseClient {
         String serverResponse = input.readLine();
         System.out.println("Server: " + serverResponse);
     }
-    
-    private static void requestLoan(BufferedReader input, PrintWriter output, String[] commandTokens) throws IOException {
-        // Extract additional details from commandTokens and perform requestLoan action
-        // Send requestLoan request to the server
-        output.println(String.join(" ", commandTokens));
 
+     private static void requestReference(BufferedReader input, PrintWriter output, String[] refInputs) throws IOException {
+        // Extract additional details from commandTokens and perform deposit action
+        // Send deposit request to the server
+        output.println(String.join(" ", refInputs));
+    
         // Get server response
         String serverResponse = input.readLine();
         System.out.println("Server: " + serverResponse);
     }
+    
+    private static void requestLoan(BufferedReader input, PrintWriter output, String[] requestTokens) throws IOException {
+        // Extract additional details from requestTokens and perform requestLoan action
+        // Send requestLoan request to the server
+        output.println(String.join(" ", requestTokens));
+    
+        // Get server response
+        String serverResponse = input.readLine();
+        System.out.println("Server: " + serverResponse);
+    }
+    
 
     private static void checkStatement(BufferedReader input, PrintWriter output, String[] commandTokens) throws IOException {
         // Extract additional details from commandTokens and perform checkStatement action
@@ -147,10 +157,10 @@ public class UpriseClient {
         System.out.println("Server: " + serverResponse);
     }
 
-    private static void checkLoanStatus(BufferedReader input, PrintWriter output, String[] commandTokens) throws IOException {
+    private static void checkLoanStatus(BufferedReader input, PrintWriter output, String[] loanStatusTokens) throws IOException {
         // Extract additional details from commandTokens and perform checkLoanStatus action
         // Send checkLoanStatus request to the server
-        output.println(String.join(" ", commandTokens));
+        output.println(String.join(" ", loanStatusTokens));
 
         // Get server response
         String serverResponse = input.readLine();
