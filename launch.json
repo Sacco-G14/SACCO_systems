@@ -1,0 +1,52 @@
+{
+    "version": "0.2.0",
+   "configurations": [
+    {
+      "type": "java",
+      "name": "UpriseClient",
+      "request": "launch",
+      "mainClass": "UpriseClient",
+      "projectName": "SACCO_system_ca8d10e9"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "SACCO_system_ca8d10e9"
+    },
+    {
+      "type": "java",
+      "name": "UpriseClient",
+      "request": "launch",
+      "mainClass": "UpriseClient",
+      "projectName": "SACCOJAVA_6ba657ab"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "SACCOJAVA_6ba657ab"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "SACCOJAVA_6ba657ab"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "SACCOJAVA_6ba657ab",
+      "classPaths": [
+        "C:\\Users\\ndjek\\OneDrive\\Desktop\\SACCO\\SACCOJAVA\\lib\\mysql-connector-j-8.0.33.jar"
+      ]
+    }
+  ]
+    
+  }
+  
